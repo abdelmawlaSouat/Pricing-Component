@@ -7,6 +7,7 @@
 .card-item {
 	margin-top: 1rem !important;
 	margin-bottom: 1rem !important;
+	font-family: 'Montserrat' !important;
 }
 .btn {
 	transition: all 0.25s linear !important;
