@@ -10,49 +10,61 @@
 import './App.css'
 import SwitchPricing from './components/SwitchPricing'
 import PriceCard from './components/PriceCard'
-import { ThemeProvider, Grid } from '@material-ui/core'
-import theme from './theme/theme'
+import Grid from '@material-ui/core/Grid'
 import { useState } from 'react'
+
 
 const pricing = [
   {
     name: 'Basic',
+    classes: 'card white-card',
     price: {
       montly: '$ 19.99',
-      annual: '$ 199.99'
+      annually: '$ 199.99'
     },
     storage: '500 GB Storage',
     users: '2 Users Allowed',
     sendUp: 'Send up to 3 GB',
-    btnLink: '#'
+    btn: {
+      link: '#',
+      classes: 'btn blue-btn'
+    }
   },
   {
     name: 'Professional',
+    classes: 'card blue-card',
     price: {
       montly: '$ 24.99',
-      annual: '$ 249.99'
+      annually: '$ 249.99'
     },
     storage: '1 TB Storage',
     users: '5 Users Allowed',
     sendUp: 'Send up to 10 GB',
-    btnLink: '#'
+    btn: {
+      link: '#',
+      classes: 'btn white-btn'
+    }
   },
   {
     name: 'Master',
+    classes: 'card white-card',
     price: {
       montly: '$ 39.99',
-      annual: '$ 399.99'
+      annually: '$ 399.99'
     },
     storage: '2 TB Storage',
     users: '10 Users Allowed',
     sendUp: 'Send up to 20 GB',
-    btnLink: '#'
+    btn: {
+      link: '#',
+      classes: 'btn blue-btn'
+    }
   }
 ]
 
 function App() {
   const [state, setState] = useState({
-		pricingType: 'annually'
+    pricingType: 'annually'
   })
   
   const onChangePricing = () => {
@@ -60,26 +72,32 @@ function App() {
       'pricingType': (state.pricingType === 'montly') ? 'annually' : 'montly'
     }))
   }
+
+  const cards = pricing.map((item, idx) => {
+    return (
+      <Grid item key={idx} xs={11} md={3} lg={2}>
+        <PriceCard card={item} pricingType={state.pricingType} />
+      </Grid>
+    )
+  })
   
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
         <Grid
           container
-          justify='center'
+          align='center'
+          direction="column"
         >
           <header className="App-header">
-            <h1>Our Pricing: {state.pricingType}</h1>
-            <SwitchPricing
-              changePricing={onChangePricing}
-            />
+            <h1>Our Pricing:</h1>
+            <SwitchPricing changePricing={onChangePricing} />
           </header>
-          <section>
-            <PriceCard></PriceCard>
-          </section>
+
+          <Grid container justify="center">
+            {cards}
+          </Grid>
 
         </Grid>
-      </ThemeProvider>
     </div>
   )
 }

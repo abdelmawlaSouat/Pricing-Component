@@ -1,0 +1,37 @@
+.card {
+	padding: 1.5rem;
+}
+.card a {
+	text-decoration: none;
+}
+.card-item {
+	margin-top: 1rem !important;
+	margin-bottom: 1rem !important;
+}
+.btn {
+	transition: all 0.25s linear !important;
+}
+.blue-btn {
+	color: white !important;
+	background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+	border: 1px solid  hsl(236, 72%, 79%) !important;
+}
+.blue-btn:hover {
+	color:  hsl(237, 63%, 64%) !important;
+	background: white !important;
+}
+.white-btn {
+	color:  hsl(237, 63%, 64%) !important;
+	background: white !important;
+	border: 1px solid white !important;
+}
+.white-btn:hover {
+	color: white !important;
+	background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%)) !important;
+}
+.blue-card {
+	background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+	color: white !important;
+	padding-top: 2.5rem !important;
+	padding-bottom: 2.5rem !important;
+}

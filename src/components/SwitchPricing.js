@@ -9,6 +9,7 @@
 
 import { useState } from 'react'
 import { withStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 import Switch from '@material-ui/core/Switch'
 
 const PricingSwitch = withStyles((theme) => ({
@@ -24,7 +25,7 @@ const PricingSwitch = withStyles((theme) => ({
 		'&$checked': {
 			color: 'white',
 			'& + $track': {
-				backgroundColor: theme.palette.secondary.light,
+				background: 'linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%))',
 				opacity: 1
 			}
 		}
@@ -35,7 +36,7 @@ const PricingSwitch = withStyles((theme) => ({
 	},
 	track: {
 		borderRadius: 26 / 2,
-		backgroundColor: theme.palette.secondary.light,
+		background: 'linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%))',
     opacity: 1
 	},
 	checked: {}
@@ -65,8 +66,12 @@ function SwitchPricing ({ changePricing }) {
 				onChange={handleChange}
 			/>
 			<span>Montly</span>
-	<p>-- {(state.checked === true) ? 'true' : 'false'}, {state.pricingType}</p>
 		</div>
 	)
 }
+
+SwitchPricing.propTypes = {
+	changePricing : PropTypes.func.isRequired
+}
+
 export default SwitchPricing
