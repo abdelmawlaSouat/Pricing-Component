@@ -75,7 +75,7 @@ function App() {
 
   const cards = pricing.map((item, idx) => {
     return (
-      <Grid item key={idx} xs={11} md={3} lg={2}>
+      <Grid item key={idx} xs={11} md={4} lg={2}>
         <PriceCard card={item} pricingType={state.pricingType} />
       </Grid>
     )
