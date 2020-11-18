@@ -6,6 +6,7 @@
  *
  * Copyright (c) 2020 Shuriken
  */
+
 import { createMuiTheme } from '@material-ui/core/styles'
 
 export default createMuiTheme({

@@ -7,9 +7,9 @@
  * Copyright (c) 2020 Shuriken
  */
 
+import { useState } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Switch from '@material-ui/core/Switch'
-import { useState } from 'react'
 
 const PricingSwitch = withStyles((theme) => ({
 	root: {
@@ -42,17 +42,19 @@ const PricingSwitch = withStyles((theme) => ({
 }))(Switch)
 
 
-function SwitchPricing () {
+function SwitchPricing ({ changePricing }) {
 	const [state, setState] = useState({
-		checked: true
+		checked: false,
+		pricingType: 'annually'
 	})
 
 	const handleChange = (event) => {
-		console.log(event.target.name);
-		console.log(event.target.checked);
-		console.log(state);
-		setState({ ...state, [event.target.name]: event.target.checked })
-	} 
+		setState((state) => ({
+			'checked': event.target.checked,
+			'pricingType': (state.pricingType === 'montly') ? 'annually' : 'montly'
+		}))
+		changePricing()
+	}
 
 	return (
 		<div>
@@ -63,6 +65,7 @@ function SwitchPricing () {
 				onChange={handleChange}
 			/>
 			<span>Montly</span>
+	<p>-- {(state.checked === true) ? 'true' : 'false'}, {state.pricingType}</p>
 		</div>
 	)
 }
